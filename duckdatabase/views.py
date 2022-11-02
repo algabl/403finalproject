@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 
 def indexPageView(request) :
-    # display, update, create, delete
     return HttpResponse('Index')
 
 def addPageView(request) :
