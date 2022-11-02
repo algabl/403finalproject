@@ -1,3 +1,7 @@
+# Authors: Crystal Hwang, Hannah Smith, Kitt Miro, and Alexander Black
+# Description: A database of various IS students' ducks
+
+
 """
 Django settings for finalproject project.
 
@@ -37,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'duckdatabase.apps.DuckdatabaseConfig',
+    'duckdatabase.apps.DuckdatabaseConfig', # added our application
 ]
 
 MIDDLEWARE = [

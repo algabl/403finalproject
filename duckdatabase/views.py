@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 
+# all of the pages that we plan on using in our project
+
 def indexPageView(request) :
     return HttpResponse('Index')
 
