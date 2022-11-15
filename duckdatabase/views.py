@@ -1,9 +1,10 @@
+from django.shortcuts import render
 from django.http import HttpResponse
 
 # all of the pages that we plan on using in our project
 
 def indexPageView(request) :
-    return HttpResponse('Index')
+    return render(request, 'duckdatabase/index.html')
 
 def addPageView(request) :
     return HttpResponse('Add')
