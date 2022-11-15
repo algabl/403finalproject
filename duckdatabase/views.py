@@ -7,13 +7,19 @@ def indexPageView(request) :
     return render(request, 'duckdatabase/index.html')
 
 def addPageView(request) :
-    return HttpResponse('Add')
+    return render(request, 'duckdatabase/add.html')
+
+def editPageView(request) :
+    return render(request, 'duckdatabase/edit.html')
+
+def deletePageView(request) :
+    return render(request, 'duckdatabase/delete.html')
 
 def aboutPageView(request) :
-    return HttpResponse('About')
+    return render(request, 'duckdatabase/about.html')
 
 def searchPageView(request) :
-    return HttpResponse('Search')
+    return render(request, 'duckdatabase/search.html')
 
 def confirmationPageView(request) :
-    return HttpResponse('Confirmation')
+    return render(request, 'duckdatabase/confirmation.html')
