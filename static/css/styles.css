@@ -435,8 +435,8 @@ legend + * {
 
 [type=search] {
   outline-offset: -2px;
-  -webkit-appearance: textfiel;
-  appearance: textfiel;
+  -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 /* rtl:raw:
@@ -449,7 +449,7 @@ legend + * {
 */
 ::-webkit-search-decoration {
   -webkit-appearance: none;
-  appearance: none;
+  appearance:none;
 }
 
 ::-webkit-color-swatch-wrapper {
