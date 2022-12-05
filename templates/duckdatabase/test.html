@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+<header class="masthead" style="background-image: url('{{duck.duck_image.url}}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>Add a Duck!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+ <!-- Main Content-->
+ <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <head>
+                <title>Create a registration form</title>
+            <head/>
+            <body>Duck Database Creation:
+                <form class="form-group" method="POST" action="{% url 'duckdatabase:add' %}">
+                    {% csrf_token %}
+                    <label>Duck Image:</label>
+                    <input type = "file" name="image" id="image">
+                    <br> <br>
+                    <label>Duck First Name:</label>
+                    <br>
+                    <input type = "text" name="first_name" id="first_name">
+                    <br> <br>
+                    <label>Duck Last Name:</label>
+                    <br>
+                    <input type = "text" name="last_name" id="last_name">
+                    <br> <br>
+
+                    <br> <br>
+                    <label>Duck Birthday:</label>
+                    <br>
+                    <input type = "date" name="birthday" id="birthday">
+                    <br><br>
+                    <label>Select Duck Body Color:</label>
+                    <select class="form-control" id="body_color" name="body_color">
+                        {% for color in colors%}
+                        <option value = "{{color.id}}">{{color.color_name}}</option>
+                        {% endfor %}
+                        <option selected="selected">Choose a color</option>
+                    </select>
+                    <br>
+                    <input  class="form-control" type="text" id="custom_body_color" name="custom_body_color" placeholder ="Enter a new body color if not listed above">
+                    <br> <br>
+                    <label>Select Duck Beak Color:</label>
+                    <select class="form-control" id="beak_color" name="beak_color">
+                        {% for color in colors%}
+                        <option value = "{{color.id}}" >{{color.color_name}}</option>
+                        {% endfor %}
+                        <option selected="selected">Choose a color</option>
+                    </select>
+                    <br>
+                    <input type="text" id="custom_beak_color" name="custom_beak_color" placeholder ="Enter a new beak color if not listed above">
+                    <br> <br>
+                    <label>Select or</label>
+                    <button type="button" id="toggler" onclick="toggle()">enter new owner</button>
+                        <br>
+                    <div id="target">
+                        <select id="owner" name="owner">
+                            {% for owner in owners%}
+                            <option value = "{{owner.id}}">{{owner.owner_full_name}}</option>
+                            {% endfor%}
+                            <option selected="selected">Choose an owner</option>
+                        </select>
+                    </div>
+
+                    <div style="display: none;" id="othertarget">
+                        <input type = "text" id="owner_first_name" name="owner_first_name" placeholder="Enter first name" />
+                        <input type = "text" id="owner_last_name" name="owner_last_name" placeholder="Enter last name"/>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary text-uppercase">Finish</button>
+                </form>
+                <br>
+            </body>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function toggle(){
+        if ($("#target").css("display") != "none") {
+            $("#target").css("display", "none");
+            $("#othertarget").css("display", "block");
+        } else {
+            $("#target").css("display", "block");
+            $("#othertarget").css("display", "none");
+        }
+    };
+    </script>
+{% endblock %}

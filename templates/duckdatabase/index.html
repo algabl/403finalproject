@@ -18,6 +18,20 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Owner</th>
+                    </tr>
+                    {% for duck in ducks %}
+                    <tr>
+                        <td>
+                            <a class="link-primary" href="{% url 'duckdatabase:edit' duck.id %}">{{duck.duck_full_name}}</a>
+                        </td>
+                        <td>{{duck.Owner.owner_full_name}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
                 <!-- Post preview-->
                 <div class="post-preview">
                     <a href="post.html">
@@ -39,7 +53,7 @@
                 <p>Photo by <a href="https://unsplash.com/@jasonthedesigner?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jason Richard</a> on <a href="https://unsplash.com/s/photos/rubber-duck?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
 
                 <!-- Pager-->
-                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'add' %}">Add →</a></div>
+                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'duckdatabase:add' %}">Add →</a></div>
             </div>
         </div>
     </div>

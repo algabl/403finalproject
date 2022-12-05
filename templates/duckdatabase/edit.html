@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap %}
 {% block content%}
-<header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+
+<header class="masthead" style="background-image: url('{{duck.duck_image.url}}')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1>Edit a Duck</h1>
+                    <h1>{{page}} Duck!</h1>
                 </div>
             </div>
         </div>
@@ -16,32 +18,46 @@
  <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <body>Duck Database Edits:
-                <form>
-                    <label>Duck First Name:</label>
-                    <br>
-                    <input type = "text">
-                    <br> <br>
-                    <label>Duck Last Name:</label>
-                    <br>
-                    <input type = "text">
-                    <br> <br>
-                    <label>Duck Birthday:</label>
-                    <br>
-                    <input type = "text">
-                    <br> <br>
-                    <label>Owner's First Name:</label>
-                    <br>
-                    <input type = "text">
-                    <br> <br>
-                    <label>Owner's Last Name:</label>
-                    <br>
-                    <input type = "text">
-                    <br> <br>
+            <i src="{{duck.duck_image}}"></i>
+            <head>
+                <title>Create a registration form</title>
+            <head/>
+            <body><h1>Create a new duck:</h1>
+                <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form|bootstrap}}
+                    
+                    <button type="submit" name="duck_form" class="btn btn-primary text-uppercase">Finish</button>
+                </form>
+                <br>
+                <h4>Add Color if Option Not Above</h4>
+                <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{color_form|bootstrap}}
+                    
+                    <button type="submit" name = "color_form" class="btn btn-primary text-uppercase">Add Color</button>
+                </form>
+                <h4>Add Owner if Option Not Above</h4>
+                <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{owner_form|bootstrap}}
+                    
+                    <button type="submit" name="owner_form" class="btn btn-primary text-uppercase">Add Owner</button>
                 </form>
             </body>
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'confirmation' %}">Finish</a></div>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    function toggle(){
+        if ($("#target").css("display") != "none") {
+            $("#target").css("display", "none");
+            $("#othertarget").css("display", "block");
+        } else {
+            $("#target").css("display", "block");
+            $("#othertarget").css("display", "none");
+        }
+    };
+    </script>
 {% endblock %}

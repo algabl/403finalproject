@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-d8s95sihpe3z%v4x&aiy&m6f^p+gm9g1fk-8o=stwsqs4_x^vo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
     'duckdatabase.apps.DuckdatabaseConfig', # added our application
 ]
 
@@ -79,15 +80,16 @@ WSGI_APPLICATION = 'finalproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'duck_database',
-#         'USER': 'postgres',
-#         'PASSWORD': 'blackarabian02!',
-#         'HOST': 'localhost'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'gUaIp1lzqUrWBdKPMYMC',
+        'HOST': 'containers-us-west-133.railway.app',
+        'PORT': '7750'
+    }
+}
 
 
 # Password validation
