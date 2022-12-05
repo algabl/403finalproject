@@ -26,7 +26,7 @@
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{form|bootstrap}}
-                    
+                    <br>
                     <button type="submit" name="duck_form" class="btn btn-primary text-uppercase">Finish</button>
                 </form>
                 <br>
@@ -34,16 +34,17 @@
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{color_form|bootstrap}}
-                    
+                    <br>
                     <button type="submit" name = "color_form" class="btn btn-primary text-uppercase">Add Color</button>
                 </form>
                 <h4>Add Owner if Option Not Above</h4>
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{owner_form|bootstrap}}
-                    
+                    <br>
                     <button type="submit" name="owner_form" class="btn btn-primary text-uppercase">Add Owner</button>
                 </form>
+                <br><br><br>
             </body>
             </div>
         </div>
