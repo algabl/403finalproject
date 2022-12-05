@@ -8,7 +8,7 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1>{{page}} Duck!</h1>
+                    <h1>Edit {{duck.duck_full_name}}</h1>
                 </div>
             </div>
         </div>
@@ -18,11 +18,11 @@
  <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <i src="{{duck.duck_image}}"></i>
             <head>
                 <title>Create a registration form</title>
             <head/>
-            <body><h1>Create a new duck:</h1>
+            <body><h1>Edit your duck:</h1>
+                <img class="img-fluid" src="{{duck.duck_image.url}}"></img>
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{form|bootstrap}}

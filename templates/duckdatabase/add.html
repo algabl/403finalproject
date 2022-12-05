@@ -26,24 +26,27 @@
                     {% csrf_token %}
                     {{ form|bootstrap }}
                     <div class="form-group">
-                    <button type="submit" class="btn btn-primary text-uppercase">Finish</button>
+                    <button type="submit" class="btn btn-primary text-uppercase" name="duck_form">Add Duck</button>
                     </div>
                 </form>
                 <br>
+                <h4>Add Color if Option Not Above</h4>
+                <form class="form-group" method="POST" action="{% url 'duckdatabase:add' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{color_form|bootstrap}}
+                    
+                    <button type="submit" name = "color_form" class="btn btn-primary text-uppercase">Add Color</button>
+                </form>
+                <h4>Add Owner if Option Not Above</h4>
+                <form class="form-group" method="POST" action="{% url 'duckdatabase:add' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{owner_form|bootstrap}}
+                    
+                    <button type="submit" name="owner_form" class="btn btn-primary text-uppercase">Add Owner</button>
+                </form>
             </body>
             </div>
         </div>
     </div>
 </div>
-<script>
-    function toggle(){
-        if ($("#target").css("display") != "none") {
-            $("#target").css("display", "none");
-            $("#othertarget").css("display", "block");
-        } else {
-            $("#target").css("display", "block");
-            $("#othertarget").css("display", "none");
-        }
-    };
-    </script>
 {% endblock %}

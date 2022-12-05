@@ -17,44 +17,46 @@
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <table>
-                    <tr>
+                <table class="table table-responsive table-striped table-hover">
+                    <tr >
                         <th>Name</th>
+                        <th>Birthday</th>
+                        <th>Age</th>
+                        <th>Body</th>
+                        <th>Beak</th>
                         <th>Owner</th>
+                        <th>Image</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     {% for duck in ducks %}
-                    <tr>
-                        <td>
-                            <a class="link-primary" href="{% url 'duckdatabase:edit' duck.id %}">{{duck.duck_full_name}}</a>
-                        </td>
+                    <tr class="clickable-row">
+                        <td>{{duck.duck_full_name}}</td>
+                        <td>{{duck.duck_birthday}}</td>
+                        <td>{{duck.duck_age}}</td>
+                        <td>{{duck.body_color}}</td>
+                        <td>{{duck.beak_color}}</td>
                         <td>{{duck.Owner.owner_full_name}}</td>
+                        <td>
+                            <a href="{{duck.duck_image.url}}">
+                                <i class="fa fa-image"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'duckdatabase:edit' duck.id %}">              
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'duckdatabase:confirmation' duck.id %}">              
+                                <i class="fa fa-trash-can"></i>
+                            </a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">This is where our database table will go</h2>
-                        <h3 class="post-subtitle">For now I'm going to write something random in here</h3>
-                    </a>
-                </div>
-                <!-- Divider-->
-                <hr class="my-4" />
-                <!-- Post preview-->
-                <div class="post-preview">
-                    <a href="post.html"><h2 class="post-title">This is just a test post to be here to look pretty</h2></a>
-                    <p class="post-meta">
-                        Posted by
-                        <a href="#!">Robert Parr</a>
-                        on October 13, 1969
-                    </p>
-                </div>
-                <p>Photo by <a href="https://unsplash.com/@jasonthedesigner?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jason Richard</a> on <a href="https://unsplash.com/s/photos/rubber-duck?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'duckdatabase:add' %}">Add New Duck →</a></div>
 
-                <!-- Pager-->
-                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'duckdatabase:add' %}">Add →</a></div>
-            </div>
         </div>
     </div>
 {% endblock%}

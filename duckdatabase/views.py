@@ -17,14 +17,24 @@ def indexPageView(request) :
 
 def addPageView(request) :
     form = DuckForm()
-    if request.method == 'POST' :
+    color_form = ColorForm()
+    owner_form = OwnerForm()
+
+    if request.method == 'POST' and "duck_form" in request.POST:
         form = DuckForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return indexPageView(request)
-
+    elif request.method =='POST' and "color_form" in request.POST:
+        submit_form = ColorForm(request.POST, request.FILES)
+        submit_form.save()
+    elif request.method =='POST' and "owner_form" in request.POST:
+        submit_form = OwnerForm(request.POST, request.FILES)
+        submit_form.save()
     context = {
-        'form' : form
+        'form' : form,
+        'color_form' : color_form,
+        'owner_form' : owner_form
     }
     return render(request, 'duckdatabase/add.html', context)
 
@@ -64,5 +74,15 @@ def searchPageView(request) :
     }
     return render(request, 'duckdatabase/search.html', context)
 
-def confirmationPageView(request) :
-    return render(request, 'duckdatabase/confirmation.html')
+def confirmationPageView(request, id) :
+    duck = Duck.objects.get(id=id)
+    if request.method == 'POST' and 'yes' in request.POST :
+        duck = Duck.objects.get(id=id)
+        duck.delete()
+        return indexPageView(request)
+    elif request.method == 'POST' and 'no' in request.POST :
+        return indexPageView(request)
+    context = {
+        'duck': duck
+    }
+    return render(request, 'duckdatabase/confirmation.html', context)

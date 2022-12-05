@@ -12,5 +12,5 @@ urlpatterns = [
     path("delete/", deletePageView, name = "delete"),
     path("about/", aboutPageView, name = "about"),
     path("search/", searchPageView, name = "search"),
-    path("confirmation/", confirmationPageView, name = "confirmation"),
+    path("confirmation/<int:id>", confirmationPageView, name = "confirmation"),
 ]
