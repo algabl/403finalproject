@@ -3,7 +3,7 @@
 {% load bootstrap %}
 {% block content%}
 
-<header class="masthead" style="background-image: url('{{duck.duck_image.url}}')">
+<header class="masthead post-heading" style="background-image: url('{% static 'assets/img/wave.svg' %}')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -18,10 +18,7 @@
  <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <head>
-                <title>Create a registration form</title>
-            <head/>
-            <body>Duck Database Creation:
+            <body>
                 <form method="POST" action="{% url 'duckdatabase:add' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|bootstrap }}
@@ -30,7 +27,7 @@
                     <button type="submit" class="btn btn-primary text-uppercase" name="duck_form">Add Duck</button>
                     </div>
                 </form>
-                <br>
+                <hr class="my-4" />
                 <h4>Add Color if Option Not Above</h4>
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:add' %}" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -38,6 +35,7 @@
                     <br>
                     <button type="submit" name = "color_form" class="btn btn-primary text-uppercase">Add Color</button>
                 </form>
+                <hr class="my-4" />
                 <h4>Add Owner if Option Not Above</h4>
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:add' %}" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -45,7 +43,7 @@
                     <br>
                     <button type="submit" name="owner_form" class="btn btn-primary text-uppercase">Add Owner</button>
                 </form>
-                <br><br><br>
+                <hr class="my-4" />
             </body>
             </div>
         </div>

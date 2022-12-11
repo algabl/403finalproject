@@ -5,7 +5,7 @@ from .models import Duck, Color, Owner
 class DuckForm(ModelForm):
     class Meta:
         model = Duck
-        fields = ['duck_image', 'duck_first_name', 'duck_last_name', 'duck_birthday', 'duck_age', 'body_color', 'beak_color', 'Owner']
+        fields = ['duck_image', 'duck_first_name', 'duck_last_name', 'duck_birthday', 'body_color', 'beak_color', 'Owner']
 
 class ColorForm(ModelForm):
     class Meta:

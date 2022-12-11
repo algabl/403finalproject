@@ -17,7 +17,8 @@
     <!-- Main Content-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
-                <table class="table table-responsive table-striped table-hover">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
                     <tr >
                         <th>Name</th>
                         <th>Birthday</th>
@@ -38,9 +39,11 @@
                         <td>{{duck.beak_color}}</td>
                         <td>{{duck.Owner.owner_full_name}}</td>
                         <td>
+                            {% if duck.duck_image %}
                             <a href="{{duck.duck_image.url}}">
                                 <i class="fa fa-image"></i>
                             </a>
+                            {% endif %}
                         </td>
                         <td>
                             <a href="{% url 'duckdatabase:edit' duck.id %}">              
@@ -55,8 +58,8 @@
                     </tr>
                     {% endfor %}
                 </table>
-                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'duckdatabase:add' %}">Add New Duck →</a></div>
-
+            </div>
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'duckdatabase:add' %}">Add New Duck →</a></div>
         </div>
     </div>
 {% endblock%}

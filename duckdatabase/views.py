@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Duck, Owner, Color
 from django.urls import reverse
-from datetime import datetime, date
 from dateutil import relativedelta
 from .forms import *
 

@@ -3,7 +3,7 @@
 {% load bootstrap %}
 {% block content%}
 
-<header class="masthead" style="background-image: url('{{duck.duck_image.url}}')">
+<header class="masthead" style="background-image: url('{% static 'assets/img/wave.svg' %}')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -29,7 +29,7 @@
                     <br>
                     <button type="submit" name="duck_form" class="btn btn-primary text-uppercase">Finish</button>
                 </form>
-                <br>
+                <hr class="my-4" />
                 <h4>Add Color if Option Not Above</h4>
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -37,6 +37,7 @@
                     <br>
                     <button type="submit" name = "color_form" class="btn btn-primary text-uppercase">Add Color</button>
                 </form>
+                <hr class="my-4" />
                 <h4>Add Owner if Option Not Above</h4>
                 <form class="form-group" method="POST" action="{% url 'duckdatabase:edit' duck.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -44,7 +45,7 @@
                     <br>
                     <button type="submit" name="owner_form" class="btn btn-primary text-uppercase">Add Owner</button>
                 </form>
-                <br><br><br>
+                <hr class="my-4" />
             </body>
             </div>
         </div>

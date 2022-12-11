@@ -11123,10 +11123,11 @@ header.masthead {
   padding-top: calc(8rem + 57px);
   padding-bottom: 8rem;
   background: no-repeat center center;
-  background-color: #6c757d;
+  background-color: #fff;
   background-size: cover;
-  background-attachment: scroll;
+  background-attachment: fixed;
 }
+
 header.masthead:before {
   content: "";
   position: absolute;

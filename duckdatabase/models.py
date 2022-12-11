@@ -1,5 +1,7 @@
 from datetime import date
 from django.db import models
+from datetime import datetime, date
+
 
 class Owner(models.Model):
     owner_first_name = models.CharField(max_length =30)
@@ -28,7 +30,7 @@ class Color(models.Model):
 
 
 class Duck(models.Model):
-    duck_image = models.ImageField(upload_to = 'photos')
+    duck_image = models.ImageField(upload_to = 'photos', blank = True)
     duck_first_name = models.CharField(max_length = 30)
     duck_last_name = models.CharField(max_length = 30)
     duck_age = models.IntegerField(default = 0)
@@ -36,7 +38,12 @@ class Duck(models.Model):
     body_color = models.ForeignKey(Color,related_name="a_body_color", null=True, blank=True, on_delete=models.SET_NULL)
     beak_color = models.ForeignKey(Color, related_name="a_beak_color", null=True, blank=True, on_delete=models.SET_NULL)
     Owner = models.ForeignKey(Owner, null=True, blank=True, on_delete=models.SET_NULL)
+    
+    @property
+    def duck_age(self):
+        today = datetime.now().date()
 
+        return today.year - self.duck_birthday.year - ((today.month, today.day) < (self.duck_birthday.month, self.duck_birthday.day))
     @property
     def duck_full_name(self):
         return '%s %s' % (self.duck_first_name, self.duck_last_name)
