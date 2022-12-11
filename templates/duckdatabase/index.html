@@ -26,6 +26,7 @@
                         <th>Body</th>
                         <th>Beak</th>
                         <th>Owner</th>
+                        <th>Description</th>
                         <th>Image</th>
                         <th></th>
                         <th></th>
@@ -38,6 +39,7 @@
                         <td>{{duck.body_color}}</td>
                         <td>{{duck.beak_color}}</td>
                         <td>{{duck.Owner.owner_full_name}}</td>
+                        <td>{{duck.duck_description}}</td>
                         <td>
                             {% if duck.duck_image %}
                             <a href="{{duck.duck_image.url}}">

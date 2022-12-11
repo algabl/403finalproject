@@ -34,6 +34,7 @@ class Duck(models.Model):
     duck_first_name = models.CharField(max_length = 30)
     duck_last_name = models.CharField(max_length = 30)
     duck_birthday = models.DateField(default = date.today)
+    duck_description = models.TextField(blank = True)
     body_color = models.ForeignKey(Color,related_name="a_body_color", null=True, blank=True, on_delete=models.SET_NULL)
     beak_color = models.ForeignKey(Color, related_name="a_beak_color", null=True, blank=True, on_delete=models.SET_NULL)
     Owner = models.ForeignKey(Owner, null=True, blank=True, on_delete=models.SET_NULL)
